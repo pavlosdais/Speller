@@ -6,3 +6,8 @@ The program takes as input a dictionary and a text file. The dictionary is loade
 
 * **Hashing** <br/>
 The hash function used is deterministic, meaning no matter how many times you pass the same word, it matches it with the same output (a positive integer). The way the matching works is using the djb2 hash function (source [here](https://theartincode.stanis.me/008-djb2/)).
+
+* **Usage** <br/>
+> Compile program: make <br/>
+> Run program: ./speller [DICTIONARY] text *OR* make run (update the text.txt file) <br/>
+  for example: ./speller large_dictionary.txt text.txt <br/>
