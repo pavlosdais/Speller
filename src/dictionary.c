@@ -1,4 +1,3 @@
-// Implements a dictionary's functionality
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
