@@ -1,5 +1,5 @@
 # Speller
 > Harvard's CS50 Introduction to Programming [Week 5](https://cs50.harvard.edu/college/2022/spring/psets/5/speller/#speller)(Data structures) project. It's important to note though that there are slight changes to the original format. <br/>
 
-* **Implementation**
+* **Implementation** <br/>
 The program takes as input a dictionary and a text file. The dictionary is loaded into a hash table then for each word in the text file it searches in the hash table to see if it exists. For the sake of simplicity, the speller is case-insensitive and no word is longer than 45 characters. In other words, if foo is in dictionary, then check should return true given any capitalization thereof; none of foo, foO, fOo, fOO, fOO, Foo, FoO, FOo, and FOO should be considered misspelled. The dictionary provided (large_dictionary.txt) uses 143,091 words and no word appears more than once but you are able to use any dictionary passed to the program structured exactly like this, alphabetically sorted from top to bottom with one word per line, each of which ends with \n (new line). 
