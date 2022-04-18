@@ -15,7 +15,7 @@ typedef struct node
 node;
 
 // Number of buckets in hash table
-#define N 900
+#define N 1000
 
 // Hash table
 node *table[N];
