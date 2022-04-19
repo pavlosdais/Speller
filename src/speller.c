@@ -9,9 +9,6 @@
 #undef calculate
 #undef getrusage
 
-// Default dictionary
-#define DICTIONARY "dictionaries/large"
-
 // Prototype
 double calculate(const struct rusage *b, const struct rusage *a);
 
@@ -20,7 +17,7 @@ int main(int argc, char *argv[])
     // Check for correct number of args
     if (argc != 3)
     {
-        printf("Usage: ./speller [DICTIONARY] text\n");
+        printf("Usage: ./speller dictionary text\n");
         return 1;
     }
 
