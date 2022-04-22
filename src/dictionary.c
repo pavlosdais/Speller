@@ -13,8 +13,11 @@ typedef struct node
 }
 node;
 
-// Number of buckets in hash table
-#define N 1000
+// Number of buckets in hash table - hash table's size
+// According to theory, the hash table's size ideally is a prime number
+// these sizes have have proven to have good behaviour:
+// 53, 97, 193, 389, 769, 1543, 3079, 6151, 12289, 24593, 49157, 98317, 196613, 393241 ..
+#define N 1543
 
 // Hash table
 node *table[N];
@@ -28,15 +31,17 @@ char lowerCase(char character)
     return character;
 }
 
-/* Hashes word to a number using djb2 hash function
-   source: https://theartincode.stanis.me/008-djb2/ */
+/* Hashes word to a number using the polynomial rolling hash function
+   source: https://www.geeksforgeeks.org/string-hashing-using-polynomial-rolling-hash-function/ */
 unsigned int hash(const char *word)
 {
-    unsigned int hash = 5381, i = 0;
-    while(word[i] != '\0')
+    const int p = 111111, m = 1e9 + 7;
+    int hash = 0;
+    long p_pow = 1;
+    for(int i = 0; word[i] != '\0'; i++)
     {
-        hash = ((hash) << 5 + hash) + lowerCase(word[i]);  // hash * 33 + lowerCase(word[i])
-        i++;
+        hash = (hash + lowerCase(word[i]) * p_pow) % m;
+        p_pow = (p_pow * p) % m;
     }
     return hash % N;
 }

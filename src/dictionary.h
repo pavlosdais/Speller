@@ -8,6 +8,9 @@
 // (e.g., pneumonoultramicroscopicsilicovolcanoconiosis)
 #define LENGTH 45
 
+// Default dictionary
+#define DICTIONARY "large_dictionary.txt"
+
 // Function Prototypes
 bool check(const char *word);
 unsigned int hash(const char *word);

@@ -1,25 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/resource.h>
-#include <sys/time.h>
 #include <ctype.h>
 #include "dictionary.h"
+#include <sys/resource.h>
+#include <sys/time.h>
 
 // Undefine any definitions
 #undef calculate
 #undef getrusage
 
-// Prototype
+// Function Prototype
 double calculate(const struct rusage *b, const struct rusage *a);
 
 int main(int argc, char *argv[])
 {
     // Check for correct number of args
-    if (argc != 3)
+    if (argc != 2 && argc != 3)
     {
-        printf("Usage: ./speller dictionary text\n");
+        printf("Usage: %s [DICTIONARY] text\n", argv[0]);
         return 1;
     }
+
+    // Determine what dictionary to use - default:large_dictionary.txt
+    char *dictionary = (argc == 3) ? argv[1] : DICTIONARY;
 
     // Structures for timing data
     struct rusage before, after;
@@ -27,25 +30,22 @@ int main(int argc, char *argv[])
     // Benchmarks
     double time_load = 0.0, time_check = 0.0;
 
-    // Determine dictionary to use
-    char *dictionary = (argc == 3) ? argv[1] : DICTIONARY;
-
     // Load dictionary
     getrusage(RUSAGE_SELF, &before);
     bool loaded = load(dictionary);
     getrusage(RUSAGE_SELF, &after);
 
-    // Exit if dictionary not loaded
+    // Exit if dictionary was not loaded
     if (!loaded)
     {
-        printf("Could not load %s.\n", dictionary);
+        printf("Error! Could not load %s.\n", dictionary);
         return 1;
     }
 
-    // Calculate time to load dictionary
+    // Calculate time to load the dictionary
     time_load = calculate(&before, &after);
 
-    // Try to open text (read mode)
+    // Try to open the text (read mode)
     char *text = (argc == 3) ? argv[2] : argv[1];
     FILE *file = fopen(text, "r");
     if (file == NULL)
@@ -54,9 +54,6 @@ int main(int argc, char *argv[])
         unload();
         return 1;
     }
-
-    // Prepare to report misspellings
-    printf("\nMISSPELLED WORDS:\n");
 
     // Prepare to spell-check
     int index = 0, misspellings = 0, words = 0;
@@ -69,7 +66,9 @@ int main(int argc, char *argv[])
         fclose(file);
         return 1;
     }
+    
     // Spell-check each word in text
+    printf("\nMISSPELLED WORDS:\n");
     char c;
     while (fread(&c, sizeof(char), 1, file))
     {

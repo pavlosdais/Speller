@@ -15,4 +15,4 @@ clear:
 
 # run spell checker
 run:
-	./speller large_dictionary.txt text.txt
+	./speller text.txt
