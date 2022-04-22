@@ -10,7 +10,6 @@ The hash function used is deterministic, meaning no matter how many times you pa
 * **Usage** <br/>
 How to compile:<br/>
 > make<br/>
-
 How to run: <br/>
 > ./speller [text] (with the the dictionary provided) <br/>
 > ./speller [dictionary] [text] (with custom dictionary)<br/>
