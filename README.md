@@ -12,5 +12,5 @@ How to compile:<br/>
 make<br/>
 
 How to run: <br/>
-./speller <text> (with the the dictionary provided) <br/>
-./speller <dictionary> <text> (with custom dictionary)<br/>
+./speller [text] (with the the dictionary provided) <br/>
+./speller [dictionary] [text] (with custom dictionary)<br/>
