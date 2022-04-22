@@ -8,8 +8,8 @@ The program takes as input a dictionary and a text file. The dictionary is loade
 The hash function used is deterministic, meaning no matter how many times you pass the same word, the same output or key(a positive integer) is generated which is used to map the word to it. The way the mapping works is by using the polynomial rolling hash function (source [here](https://www.geeksforgeeks.org/string-hashing-using-polynomial-rolling-hash-function/)). The default size of the hash table is 1543 but higher sizes, preferably prime numbers, can be used in order to change the speed of the speller (by using more/less space).
 
 * **Usage** <br/>
-How to compile:<br/>
-> make <br/>
-How to run: <br/>
+* How to compile:<br/>
+make <br/>
+* How to run: <br/>
 ./speller [text] (with the the dictionary provided) <br/>
 ./speller [dictionary] [text] (with custom dictionary)<br/>
