@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "dictionary.h"
 #include <sys/resource.h>
 #include <sys/time.h>
+#include "dictionary.h"
 
 // Undefine any definitions
 #undef calculate
