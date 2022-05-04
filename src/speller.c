@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     FILE *file = fopen(text, "r");
     if (file == NULL)
     {
-        printf("Could not open %s.\n", text);
+        printf("Could not open %s, exiting..\n", text);
         unload();
         return 1;
     }
@@ -130,18 +130,18 @@ int main(int argc, char *argv[])
     }
     free(word);
 
-    // Close text
-    fclose(file);
-
-    // Unload dictionary
-    unload();
-
     // Check whether there was an error
     if (ferror(file))
     {
         printf("Error reading %s.\n", text);
         return 1;
     }
+
+    // Close text
+    fclose(file);
+
+    // Unload dictionary
+    unload();
 
     // Report benchmarks
     printf("\nWords misspelled:          %d\n", misspellings);

@@ -1,6 +1,9 @@
+# object files
+OBJ = speller.o dictionary.o
+
 # create the executable file
-speller: speller.o dictionary.o
-	gcc -o speller speller.o dictionary.o
+speller: $(OBJ)
+	gcc -o speller $(OBJ)
 
 # create the object files needed
 speller.o: speller.c
@@ -11,8 +14,8 @@ dictionary.o: dictionary.c
 
 # remove excess object files
 clear:
-	rm -f *.o
+	rm -f $(OBJ)
 
-# run spell checker
+# run spell checker with the default dictionary
 run:
 	./speller text.txt
