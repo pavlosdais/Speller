@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     // Exit if dictionary was not loaded
     if (!loaded)
     {
-        printf("Error! Could not load %s.\n", dictionary);
+        printf("Error! Could not load %s, exiting..\n", dictionary);
         return 1;
     }
 
@@ -133,7 +133,7 @@ int main(int argc, char *argv[])
     // Check whether there was an error
     if (ferror(file))
     {
-        printf("Error reading %s.\n", text);
+        printf("Error reading %s, exiting..\n", text);
         return 1;
     }
 
