@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include <sys/resource.h>
 #include <sys/time.h>
-#include "dictionary.h"
+#include "../include/dictionary.h"
 
 // Undefine any definitions
 #undef calculate
